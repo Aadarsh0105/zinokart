@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #fffdf9; font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif; }
+* { box-sizing: border-box; }
+.hero-orb { position: absolute; width: 34rem; height: 34rem; border-radius: 9999px; filter: blur(85px); opacity: 0.38; pointer-events: none; }
+::selection { background: #f9a825; color: #1a1a1a; }
