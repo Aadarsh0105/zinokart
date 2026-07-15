@@ -1,201 +1,160 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { PlusIcon } from 'lucide-react';
+import { SectionHeading } from './primitives';
+type QA = {
+  q: string;
+  a: string;
+};
+const FAQS: QA[] = [
+{
+  q: 'What exactly is Zinokart?',
+  a: 'Zinokart is a complete white-label multi-vendor marketplace platform. It gives you three dedicated Flutter mobile applications — a Customer App, a Store App and a Delivery App — all connected through one scalable marketplace infrastructure that keeps every operation synchronized in real time.'
+},
+{
+  q: 'Is Zinokart really white-label?',
+  a: 'Yes. Every app can be shipped entirely under your own brand — your name, logo, colors and identity. Your customers, vendors and delivery partners experience your marketplace, not ours.'
+},
+{
+  q: 'Do I receive the complete source code?',
+  a: 'You receive the full source code for all three applications and the marketplace infrastructure that powers them. You own the codebase and can customize, extend and evolve it however your business requires.'
+},
+{
+  q: 'Which business categories can I launch?',
+  a: 'Zinokart supports six business modules out of the box: Food Delivery, Grocery, Shopping, Pharmacy, Parcel Delivery and Cab Booking. You can run one module or several from the same connected platform.'
+},
+{
+  q: 'How do the three apps work together?',
+  a: 'They are three faces of one platform. When a customer places an order, the store is notified, a delivery partner is dispatched, payments settle, and everyone tracks the same live status — all through a single synchronized marketplace infrastructure.'
+},
+{
+  q: 'What technology is Zinokart built with?',
+  a: 'The apps are built with Flutter for native iOS and Android performance. The backend uses Laravel with a clean REST API layer, MySQL for structured data, and Firebase for real-time sync and push notifications — deployed on scalable cloud infrastructure.'
+},
+{
+  q: 'Can I customize the platform?',
+  a: 'Absolutely. Thanks to a clean, well-documented codebase you can adapt branding, flows, modules and features to match your exact business model without fighting the system.'
+},
+{
+  q: 'Does Zinokart support multiple languages and currencies?',
+  a: 'Yes. The platform is built for localization with multi-language and multi-currency support, so you can launch across different countries and regions with confidence.'
+},
+{
+  q: 'How are payments handled?',
+  a: 'The platform supports multiple payment methods, an in-app wallet, secure transactions and split payouts to vendors — giving customers flexibility while keeping settlements clean for every party.'
+},
+{
+  q: 'Is the platform ready to scale?',
+  a: 'Yes. Zinokart is engineered on a modern, scalable architecture with efficient data sync and cloud deployment, so it grows with you from your first city to nationwide operations.'
+},
+{
+  q: 'How do you ensure secure and verified deliveries?',
+  a: 'The Delivery App includes OTP verification and proof of delivery, alongside secure authentication and role-based access across the platform — reducing disputes and building trust with your customers.'
+},
+{
+  q: 'Do vendors manage their own stores?',
+  a: 'Yes. Store owners run their entire business from the Store App — catalog, inventory, orders, availability, business hours, discounts, earnings and analytics — so you scale supply without operational overhead.'
+},
+{
+  q: 'Will I receive updates and documentation?',
+  a: 'Zinokart ships with rich documentation and regular updates that keep your platform current, secure and aligned with modern standards, so your team stays productive.'
+},
+{
+  q: 'Can developers extend the platform via APIs?',
+  a: 'Yes. A documented REST API layer with extensible endpoints makes it straightforward to add integrations and build on top of the platform.'
+},
+{
+  q: 'Is Zinokart suitable for enterprises?',
+  a: 'Yes. From multi-vendor management and analytics to security and performance, Zinokart is designed for real operations at real volume — enterprise-ready from the start.'
+}];
 
-import Container from "./ui/Container";
+function FaqItem({
+  item,
+  isOpen,
+  onToggle
 
-const faqs = [
-    {
-        question: "How long does it take to launch a marketplace?",
-        answer:
-            "Most businesses can launch within a few days after customization, configuration and deployment.",
-    },
-    {
-        question: "Can I customize the design and features?",
-        answer:
-            "Yes. Zinokart can be customized to match your branding, workflows and business requirements.",
-    },
-    {
-        question: "Is Zinokart ready for multiple countries?",
-        answer:
-            "Yes. The platform supports multiple countries, currencies, languages and location-based services.",
-    },
-    {
-        question: "Can I launch only one business category?",
-        answer:
-            "Absolutely. You can start with Food Delivery, Grocery, Pharmacy, Shopping, Parcel or Cab Booking and enable more categories whenever you need.",
-    },
-    {
-        question: "Are Android and iOS apps included?",
-        answer:
-            "Yes. Customer, Store and Delivery applications are available for both Android and iOS.",
-    },
-    {
-        question: "Do you provide installation and technical support?",
-        answer:
-            "Yes. We help with installation, deployment, updates and ongoing technical support.",
-    },
-];
 
-export default function FAQ() {
 
-    const [open, setOpen] = useState(0);
 
-    return (
-
-        <section className="bg-white pt-20 pb-5" id="faq">
-
-            <Container>
-
-                {/* Section Heading */}
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="mx-auto max-w-3xl text-center"
-                >
-
-                    <span className="inline-flex items-center rounded-full border border-[#F4DFC2] bg-[#FFF6E6] px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#B76B00]">
-
-                        Frequently Asked Questions
-
-                    </span>
-
-                    <h2 className="mt-8 text-5xl font-black leading-[1.05] tracking-[-0.05em] text-[#171717] sm:text-6xl">
-
-                        Everything you need
-
-                        <span className="block bg-gradient-to-r from-[#FDBA2D] to-[#F59E0B] bg-clip-text text-transparent">
-
-                            before getting started.
-
-                        </span>
-
-                    </h2>
-
-                    <p className="mx-auto mt-7 max-w-2xl text-lg leading-8 text-stone-600">
-
-                        Here are answers to the most common questions about
-                        launching, customizing and growing your marketplace
-                        with Zinokart.
-
-                    </p>
-
-                </motion.div>
-
-                {/* FAQ List */}
-
-                <div className="mx-auto mt-20 max-w-4xl space-y-5">
-
-                    {faqs.map((faq, index) => (
-
-                        <FAQItem
-                            key={faq.question}
-                            faq={faq}
-                            open={open === index}
-                            onClick={() =>
-                                setOpen(open === index ? -1 : index)
-                            }
-                        />
-
-                    ))}
-
-                </div>
-
-            </Container>
-
-        </section>
-
-    );
-
-}
-
-interface FAQ {
-    question: string;
-    answer: string;
-}
-
-function FAQItem({
-    faq,
-    open,
-    onClick,
-}: {
-    faq: FAQ;
-    open: boolean;
-    onClick: () => void;
-}) {
-
-    return (
-
+}: {item: QA;isOpen: boolean;onToggle: () => void;}) {
+  return (
+    <div className="border-b border-surface-border">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="flex w-full items-center justify-between gap-4 py-5 text-left">
+        
+        <span className="font-display text-base font-semibold text-ink sm:text-lg">
+          {item.q}
+        </span>
+        <motion.span
+          animate={{
+            rotate: isOpen ? 45 : 0
+          }}
+          transition={{
+            duration: 0.25
+          }}
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${isOpen ? 'bg-brand-indigo text-white' : 'bg-surface-bg text-ink'}`}>
+          
+          <PlusIcon size={18} />
+        </motion.span>
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen &&
         <motion.div
-            layout
-            transition={{
-                duration: 0.3,
-            }}
-            className="overflow-hidden rounded-[28px] border border-[#EFE4D1] bg-white shadow-[0_10px_35px_rgba(0,0,0,.04)]"
-        >
+          initial={{
+            height: 0,
+            opacity: 0
+          }}
+          animate={{
+            height: 'auto',
+            opacity: 1
+          }}
+          exit={{
+            height: 0,
+            opacity: 0
+          }}
+          transition={{
+            duration: 0.3,
+            ease: [0.22, 1, 0.36, 1]
+          }}
+          className="overflow-hidden">
+          
+            <p className="pb-6 pr-12 text-sm leading-relaxed text-ink-soft sm:text-base">
+              {item.a}
+            </p>
+          </motion.div>
+        }
+      </AnimatePresence>
+    </div>);
 
-            {/* Question */}
+}
+export function FAQ() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section className="relative py-8 sm:py-10">
+      <div className="mx-auto max-w-3xl px-6">
+        <SectionHeading
+          eyebrow="Frequently Asked Questions"
+          title={
+          <>
+              Everything you need{' '}
+              <span className="zk-gradient-text">to feel confident.</span>
+            </>
+          } />
+        
+        <div className="mt-12">
+          {FAQS.map((item, i) =>
+          <FaqItem
+            key={item.q}
+            item={item}
+            isOpen={open === i}
+            onToggle={() => setOpen(open === i ? null : i)} />
 
-            <button
-                onClick={onClick}
-                className="flex w-full items-center justify-between px-8 py-7 text-left transition hover:bg-[#FFFBF5]"
-            >
-
-                <h3 className="pr-6 text-lg font-bold leading-7 text-[#171717]">
-
-                    {faq.question}
-
-                </h3>
-
-                <div
-                    className={`flex h-11 w-11 items-center justify-center rounded-full transition-all duration-300 ${
-                        open
-                            ? "bg-[#F9A825] text-white"
-                            : "bg-[#FFF4D8] text-[#F59E0B]"
-                    }`}
-                >
-
-                    {open ? (
-                        <Minus size={18} />
-                    ) : (
-                        <Plus size={18} />
-                    )}
-
-                </div>
-
-            </button>
-
-            {/* Answer */}
-
-            <motion.div
-                initial={false}
-                animate={{
-                    height: open ? "auto" : 0,
-                    opacity: open ? 1 : 0,
-                }}
-                transition={{
-                    duration: 0.3,
-                }}
-                className="overflow-hidden"
-            >
-
-                <div className="border-t border-[#F3E7D4] px-8 py-6">
-
-                    <p className="text-[15px] leading-8 text-stone-600">
-
-                        {faq.answer}
-
-                    </p>
-
-                </div>
-
-            </motion.div>
-
-        </motion.div>
-
-    );
+          )}
+        </div>
+      </div>
+    </section>);
 
 }

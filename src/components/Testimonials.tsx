@@ -1,319 +1,677 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+// import { useState } from 'react';
+// import { AnimatePresence, motion } from 'framer-motion';
+// import {
+//   ChevronLeftIcon,
+//   ChevronRightIcon,
+//   QuoteIcon,
+//   StarIcon
+// } from
+//   'lucide-react';
+// import { SectionHeading } from './primitives';
+// type Testimonial = {
+//   name: string;
+//   company: string;
+//   country: string;
+//   category: string;
+//   review: string;
+//   avatar: string;
+// };
+// const TESTIMONIALS: Testimonial[] = [
+//   {
+//     name: 'Priya Nair',
+//     company: 'FreshBasket',
+//     country: 'India',
+//     category: 'Grocery',
+//     review:
+//       'We launched our grocery marketplace in weeks, not months. The three apps worked together flawlessly from day one, and owning the full source code meant we could brand and customize everything exactly the way we wanted. Our vendors manage themselves entirely through the Store App.',
+//     avatar: "/3a8909f3-cbc5-4941-b10a-75759cca6938.jpg"
+
+//   },
+//   {
+//     name: 'Omar Al-Farsi',
+//     company: 'RapidCourier',
+//     country: 'UAE',
+//     category: 'Parcel Delivery',
+//     review:
+//       'The Delivery App is genuinely production-grade — OTP verification and proof of delivery cut our disputes to almost zero. Real-time tracking across the connected platform gives our customers confidence, and the architecture has scaled cleanly as we expanded across the region.',
+//     avatar: "/a313f671-b635-4878-81bd-1bd5dfff9a60.jpg"
+
+//   },
+//   {
+//     name: 'Daniel Okafor',
+//     company: 'CityEats',
+//     country: 'Nigeria',
+//     category: 'Food Delivery',
+//     review:
+//       'Zinokart let us compete with the big delivery brands under our own identity. Orders, payments and notifications stay perfectly in sync, and the Flutter apps feel fast and premium. The documentation made onboarding our dev team surprisingly painless.',
+//     avatar: "/01f5f498-0d5b-4baf-8f83-dbccd6f29f16.jpg"
+
+//   },
+//   {
+//     name: 'Mei Lin',
+//     company: 'UrbanCart',
+//     country: 'Singapore',
+//     category: 'Shopping',
+//     review:
+//       "What sold us was the ecosystem thinking — this isn't three disconnected apps, it's one marketplace infrastructure. Multi-language and multi-currency support let us go regional immediately, and the clean codebase makes every customization straightforward.",
+//     avatar: "/840682a6-3ad4-4f1d-ab78-639eacac2f2d.jpg"
+
+//   }];
+
+// export function Testimonials() {
+//   const [index, setIndex] = useState(0);
+//   const [direction, setDirection] = useState(1);
+
+//   const desktopPages = [];
+
+//   for (let i = 0; i < TESTIMONIALS.length; i += 3) {
+//     desktopPages.push(TESTIMONIALS.slice(i, i + 3));
+//   }
+
+//   const activeTestimonial = TESTIMONIALS[index];
+
+//   const desktopIndex = Math.floor(index / 3);
+//   const go = (step: number) => {
+//     setDirection(step);
+
+//     if (window.innerWidth >= 1024) {
+//       setIndex((current) => {
+//         const next = current + step * 3;
+
+//         if (next < 0)
+//           return (desktopPages.length - 1) * 3;
+
+//         if (next >= TESTIMONIALS.length)
+//           return 0;
+
+//         return next;
+//       });
+//     } else {
+//       setIndex((current) =>
+//         (current + step + TESTIMONIALS.length) %
+//         TESTIMONIALS.length
+//       );
+//     }
+//   };
+//   const renderContent = (testimonial: Testimonial, compact = false) =>
+//     <>
+//       <QuoteIcon
+//         size={compact ? 30 : 40}
+//         className="text-brand-indigo/20"
+//         aria-hidden="true" />
+
+//       <div className="mt-3 flex gap-1" aria-label="5 out of 5 stars">
+//         {Array.from({
+//           length: 5
+//         }).map((_, star) =>
+//           <StarIcon
+//             key={star}
+//             size={compact ? 14 : 18}
+//             className="fill-amber-400 text-amber-400"
+//             aria-hidden="true" />
+
+//         )}
+//       </div>
+//       <blockquote
+//         className={`mt-4 leading-relaxed text-ink ${compact ? 'text-sm' : 'text-lg sm:text-xl'}`}>
+
+//         “{testimonial.review}”
+//       </blockquote>
+//       <div
+//         className={`flex items-center gap-3 ${compact ? 'mt-6' : 'mt-8 gap-4'}`}>
+
+//         <img
+//           src={testimonial.avatar}
+//           alt={testimonial.name}
+//           className={`${compact ? 'h-11 w-11' : 'h-14 w-14'} rounded-full object-cover ring-2 ring-brand-indigo/20`}
+//           loading="lazy" />
+
+//         <div>
+//           <p className="font-display text-sm font-bold text-ink">
+//             {testimonial.name}
+//           </p>
+//           <p className="text-xs text-ink-soft">
+//             {testimonial.company} · {testimonial.country}
+//           </p>
+//           <span className="mt-1 inline-block rounded-full bg-brand-indigo/10 px-2 py-0.5 text-[10px] font-semibold text-brand-indigo">
+//             {testimonial.category}
+//           </span>
+//         </div>
+//       </div>
+//     </>;
+
+//   return (
+//     <section className="relative overflow-hidden py-24 sm:py-32">
+//       <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-indigo/10 blur-[130px]" />
+//       <div className="mx-auto max-w-6xl px-6">
+//         <SectionHeading
+//           eyebrow="Testimonials"
+//           title={
+//             <>
+//               Trusted by operators{' '}
+//               <span className="zk-gradient-text">around the world.</span>
+//             </>
+//           }
+//           description="Marketplace builders across categories and countries are launching on Zinokart." />
+
+
+//         <div className="relative mt-14 hidden overflow-hidden lg:block">
+
+//           <motion.div
+//             animate={{
+//               x: `-${desktopIndex * 100}%`,
+//             }}
+//             transition={{
+//               duration: .5,
+//               ease: "easeInOut",
+//             }}
+//             className="flex"
+//           >
+
+//             {desktopPages.map((page, pageIndex) => (
+
+//               <div
+//                 key={pageIndex}
+//                 className="grid w-full shrink-0 grid-cols-3 gap-5"
+//               >
+
+//                 {page.map((testimonial, cardIndex) => (
+
+//                   <motion.article
+//                     key={testimonial.name}
+//                     initial={{
+//                       opacity: 0,
+//                       y: 18,
+//                     }}
+//                     whileInView={{
+//                       opacity: 1,
+//                       y: 0,
+//                     }}
+//                     viewport={{
+//                       once: true,
+//                     }}
+//                     transition={{
+//                       duration: .45,
+//                       delay: cardIndex * .08,
+//                     }}
+//                     className="flex h-full flex-col rounded-3xl border border-surface-border bg-white p-6 shadow-soft"
+//                   >
+
+//                     {renderContent(testimonial, true)}
+
+//                   </motion.article>
+
+//                 ))}
+
+//               </div>
+
+//             ))}
+
+//           </motion.div>
+
+//         </div>
+
+//         <div className="relative mt-14 lg:hidden">
+//           <AnimatePresence mode="wait" custom={direction}>
+//             <motion.article
+//               key={index}
+//               custom={direction}
+//               initial={{
+//                 opacity: 0,
+//                 x: direction >= 0 ? 60 : -60
+//               }}
+//               animate={{
+//                 opacity: 1,
+//                 x: 0
+//               }}
+//               exit={{
+//                 opacity: 0,
+//                 x: direction >= 0 ? -60 : 60
+//               }}
+//               transition={{
+//                 duration: 0.45,
+//                 ease: [0.22, 1, 0.36, 1]
+//               }}
+//               className="rounded-3xl border border-surface-border bg-white p-8 shadow-card sm:p-12">
+
+//               {renderContent(activeTestimonial)}
+//             </motion.article>
+//           </AnimatePresence>
+
+//           <div className="mt-10 flex items-center justify-center gap-4">
+
+//             <button
+//               onClick={() => go(-1)}
+//               className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border bg-white shadow-soft transition hover:border-brand-indigo"
+//             >
+//               <ChevronLeftIcon size={18} />
+//             </button>
+
+//             <div className="flex gap-2">
+
+//               {(window.innerWidth >= 1024
+//                 ? desktopPages
+//                 : TESTIMONIALS
+//               ).map((_, i) => (
+
+//                 <button
+//                   key={i}
+//                   onClick={() => {
+//                     setDirection(i > (window.innerWidth >= 1024 ? desktopIndex : index) ? 1 : -1);
+
+//                     setIndex(window.innerWidth >= 1024 ? i * 3 : i);
+//                   }}
+//                   className={`h-2 rounded-full transition-all duration-300 ${(
+//                       window.innerWidth >= 1024
+//                         ? desktopIndex === i
+//                         : index === i
+//                     )
+//                       ? "w-8 bg-brand-indigo"
+//                       : "w-2 bg-surface-border"
+//                     }`}
+//                 />
+
+//               ))}
+
+//             </div>
+
+//             <button
+//               onClick={() => go(1)}
+//               className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border bg-white shadow-soft transition hover:border-brand-indigo"
+//             >
+//               <ChevronRightIcon size={18} />
+//             </button>
+
+//           </div>
+//         </div>
+//       </div>
+//     </section>);
+
+// }
+
+import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-    ChevronLeft,
-    ChevronRight,
-    Star,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  QuoteIcon,
+  StarIcon,
 } from "lucide-react";
+import { SectionHeading } from "./primitives";
 
-import Container from "./ui/Container";
+type Testimonial = {
+  name: string;
+  company: string;
+  country: string;
+  category: string;
+  review: string;
+  avatar: string;
+};
 
-const testimonials = [
-    {
-        name: "Ahmed Khan",
-        company: "FreshMart",
-        country: "United Arab Emirates",
-        image: "https://randomuser.me/api/portraits/men/32.jpg",
-        review:
-            "Launching our marketplace was surprisingly fast. The customer, vendor and delivery apps worked together seamlessly from day one. Our team was able to onboard stores quickly and customers immediately appreciated the smooth experience.",
-    },
-    {
-        name: "Sarah Johnson",
-        company: "Urban Grocery",
-        country: "Canada",
-        image: "https://randomuser.me/api/portraits/women/44.jpg",
-        review:
-            "The UI feels premium and our vendors adapted instantly. Managing products, inventory and customer orders has never been easier. The overall workflow saved us a huge amount of time every day.",
-    },
-    {
-        name: "David Wilson",
-        company: "QuickEats",
-        country: "United Kingdom",
-        image: "https://randomuser.me/api/portraits/men/68.jpg",
-        review:
-            "Real-time tracking and notifications completely transformed our delivery experience. Customers love being able to follow every step of their order and our support requests dropped significantly.",
-    },
-    {
-        name: "Mohammed Ali",
-        company: "City Pharmacy",
-        country: "Saudi Arabia",
-        image: "https://randomuser.me/api/portraits/men/76.jpg",
-        review:
-            "Exactly the solution we were looking for. Food, pharmacy and grocery are now managed from one ecosystem, making operations easier for both our staff and customers.",
-    },
-    {
-        name: "Emily Brown",
-        company: "Daily Basket",
-        country: "Australia",
-        image: "https://randomuser.me/api/portraits/women/65.jpg",
-        review:
-            "The Flutter apps are smooth, modern and beautifully designed. Customers loved the experience immediately and our merchants quickly became comfortable with the platform.",
-    },
-    {
-        name: "Carlos Mendes",
-        company: "GoMarket",
-        country: "Brazil",
-        image: "https://randomuser.me/api/portraits/men/12.jpg",
-        review:
-            "Professional architecture, clean interface and excellent scalability. Zinokart gave us a strong foundation to launch our marketplace confidently without unnecessary complexity.",
-    },
+const TESTIMONIALS: Testimonial[] = [
+  {
+    name: "Priya Nair",
+    company: "FreshBasket",
+    country: "India",
+    category: "Grocery",
+    review:
+      "We launched our grocery marketplace in weeks, not months. The three apps worked together flawlessly from day one, and our vendors manage themselves entirely through the Store App.",
+    avatar: "/3a8909f3-cbc5-4941-b10a-75759cca6938.jpg",
+  },
+  {
+    name: "Omar Al-Farsi",
+    company: "RapidCourier",
+    country: "UAE",
+    category: "Parcel Delivery",
+    review:
+      "The Delivery App is production-ready. Real-time tracking and proof of delivery significantly improved customer confidence while helping us expand across the region.",
+    avatar: "/a313f671-b635-4878-81bd-1bd5dfff9a60.jpg",
+  },
+  {
+    name: "Daniel Okafor",
+    company: "CityEats",
+    country: "Nigeria",
+    category: "Food Delivery",
+    review:
+      "Zinokart helped us launch under our own brand. Orders, payments and notifications remain perfectly synchronized across the entire marketplace.",
+    avatar: "/01f5f498-0d5b-4baf-8f83-dbccd6f29f16.jpg",
+  },
+  {
+    name: "Mei Lin",
+    company: "UrbanCart",
+    country: "Singapore",
+    category: "Shopping",
+    review:
+      "The connected marketplace approach made scaling incredibly simple. Multi-language support and the smooth customer experience exceeded our expectations.",
+    avatar: "/840682a6-3ad4-4f1d-ab78-639eacac2f2d.jpg",
+  },
+  {
+    name: "James Walker",
+    company: "GoMart",
+    country: "Australia",
+    category: "Marketplace",
+    review:
+      "Everything from vendor onboarding to order fulfillment works seamlessly. Our launch was faster than expected and customers love the polished apps.",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+  {
+    name: "Fatima Hassan",
+    company: "CityExpress",
+    country: "Qatar",
+    category: "Delivery",
+    review:
+      "Real-time order tracking and delivery management completely transformed our operations. The ecosystem feels like one unified platform.",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
 ];
 
-export default function Testimonials() {
+export function Testimonials() {
+  const [desktopPage, setDesktopPage] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
 
-    const [current, setCurrent] = useState(0);
+  const desktopPages = useMemo(() => {
+    const pages: Testimonial[][] = [];
 
-    return (
+    for (let i = 0; i < TESTIMONIALS.length; i += 3) {
+      pages.push(TESTIMONIALS.slice(i, i + 3));
+    }
 
-        <section className="relative overflow-hidden bg-[#FFFDF9] pt-20 pb-5" id="testimonials">
+    return pages;
+  }, []);
 
-            <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#FDBA2D]/10 blur-[140px]" />
+  const nextDesktop = () => {
+    setDirection(1);
 
-            <Container>
-
-                {/* Section Heading */}
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="mx-auto max-w-3xl text-center"
-                >
-
-                    <span className="inline-flex items-center rounded-full border border-[#F4DFC2] bg-[#FFF6E6] px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#B76B00]">
-
-                        Testimonials
-
-                    </span>
-
-                    <h2 className="mt-8 text-5xl font-black leading-[1.05] tracking-[-0.05em] text-[#171717] sm:text-6xl">
-
-                        Trusted by businesses
-
-                        <span className="block bg-gradient-to-r from-[#FDBA2D] to-[#F59E0B] bg-clip-text text-transparent">
-
-                            around the world.
-
-                        </span>
-
-                    </h2>
-
-                    <p className="mx-auto mt-7 max-w-2xl text-lg leading-8 text-stone-600">
-
-                        Entrepreneurs, startups and enterprises trust Zinokart to launch
-                        scalable multi-vendor marketplaces with exceptional customer
-                        experiences.
-
-                    </p>
-
-                </motion.div>
-
-                {/* Slider */}
-
-                <div className="relative mt-20 overflow-hidden">
-
-                    <motion.div
-                        animate={{
-                            x: `-${Math.floor(current / 3) * 100}%`,
-                        }}
-                        transition={{
-                            duration: 0.5,
-                            ease: "easeInOut",
-                        }}
-                        className="flex"
-                    >
-                        {Array.from({
-                            length: Math.ceil(testimonials.length / 3),
-                        }).map((_, pageIndex) => (
-
-                            <div
-                                key={pageIndex}
-                                className="grid w-full shrink-0 gap-8 lg:grid-cols-3"
-                            >
-                                {testimonials
-                                    .slice(pageIndex * 3, pageIndex * 3 + 3)
-                                    .map((testimonial) => (
-                                        <TestimonialCard
-                                            key={testimonial.name}
-                                            testimonial={testimonial}
-                                        />
-                                    ))}
-                            </div>
-
-                        ))}
-                    </motion.div>
-
-                </div>
-
-                {/* Navigation */}
-
-                <div className="mt-10 flex items-center justify-center gap-4">
-
-                    <button
-
-                        onClick={() =>
-                            setCurrent((prev) =>
-                                prev < 3
-                                    ? testimonials.length - 3
-                                    : prev - 3
-                            )
-                        }
-
-                        className="flex h-12 w-12 items-center justify-center rounded-full border border-[#EFE3D1] bg-white transition hover:border-[#F9A825]"
-
-                    >
-
-                        <ChevronLeft size={20} />
-
-                    </button>
-
-                    <div className="flex gap-3">
-
-                        {testimonials.map((_, index) => (
-
-                            <button
-                                key={index}
-                                onClick={() => setCurrent(index)}
-                                className={`h-2.5 rounded-full transition-all duration-300 ${current === index
-                                    ? "w-8 bg-[#F9A825]"
-                                    : "w-2.5 bg-[#E6D7C2]"
-                                    }`}
-                            />
-
-                        ))}
-
-                    </div>
-
-                    <button
-
-                        onClick={() =>
-                            setCurrent((prev) =>
-                                prev >= testimonials.length - 3
-                                    ? 0
-                                    : prev + 3
-                            )
-                        }
-
-                        className="flex h-12 w-12 items-center justify-center rounded-full border border-[#EFE3D1] bg-white transition hover:border-[#F9A825]"
-
-                    >
-
-                        <ChevronRight size={20} />
-
-                    </button>
-
-                </div>
-
-            </Container>
-
-        </section>
-
+    setDesktopPage((prev) =>
+      prev === desktopPages.length - 1 ? 0 : prev + 1
     );
+  };
 
-}
+  const prevDesktop = () => {
+    setDirection(-1);
 
-interface Testimonial {
-    name: string;
-    company: string;
-    country: string;
-    image: string;
-    review: string;
-}
+    setDesktopPage((prev) =>
+      prev === 0 ? desktopPages.length - 1 : prev - 1
+    );
+  };
 
-function TestimonialCard({
-    testimonial,
-}: {
-    testimonial: Testimonial;
-}) {
+  const nextMobile = () => {
+    setDirection(1);
 
-    return (
+    setMobileIndex((prev) =>
+      prev === TESTIMONIALS.length - 1 ? 0 : prev + 1
+    );
+  };
 
-        <motion.article
+  const prevMobile = () => {
+    setDirection(-1);
 
-            initial={{
-                opacity: 0,
-                y: 20,
+    setMobileIndex((prev) =>
+      prev === 0 ? TESTIMONIALS.length - 1 : prev - 1
+    );
+  };
+
+  const renderContent = (
+    testimonial: Testimonial,
+    compact = false
+  ) => (
+    <>
+      <QuoteIcon
+        size={compact ? 28 : 40}
+        className="text-brand-indigo/20"
+      />
+
+      <div className="mt-3 flex gap-1">
+        {[...Array(5)].map((_, i) => (
+          <StarIcon
+            key={i}
+            size={compact ? 14 : 18}
+            className="fill-amber-400 text-amber-400"
+          />
+        ))}
+      </div>
+
+      <blockquote
+        className={`mt-4 leading-8 text-ink ${compact ? "line-clamp-6 text-sm" : "text-lg"
+          }`}
+      >
+        “{testimonial.review}”
+      </blockquote>
+
+      <div
+        className={`flex items-center ${compact ? "mt-6 gap-3" : "mt-8 gap-4"
+          }`}
+      >
+        <img
+          src={testimonial.avatar}
+          alt={testimonial.name}
+          className={`${compact ? "h-11 w-11" : "h-14 w-14"
+            } rounded-full object-cover ring-2 ring-brand-indigo/20`}
+        />
+
+        <div>
+          <h4 className="font-display text-sm font-bold text-ink">
+            {testimonial.name}
+          </h4>
+
+          <p className="text-xs text-ink-soft">
+            {testimonial.company} · {testimonial.country}
+          </p>
+
+          <span className="mt-1 inline-block rounded-full bg-brand-indigo/10 px-2 py-1 text-[10px] font-semibold text-brand-indigo">
+            {testimonial.category}
+          </span>
+        </div>
+      </div>
+    </>
+  );
+  return (
+    <section className="relative overflow-hidden py-8 sm:py-10">
+
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-indigo/10 blur-[130px]" />
+
+      <div className="mx-auto max-w-6xl px-6">
+
+        <SectionHeading
+          eyebrow="Testimonials"
+          title={
+            <>
+              Trusted by operators{" "}
+              <span className="zk-gradient-text">
+                around the world.
+              </span>
+            </>
+          }
+          description="Marketplace builders across different industries trust Zinokart to launch and grow their marketplace businesses."
+        />
+
+        {/* ---------------- Desktop Slider ---------------- */}
+
+        <div className="relative mt-16 hidden overflow-hidden lg:block">
+
+          <motion.div
+            animate={{
+              x: `-${desktopPage * 100}%`,
             }}
-
-            whileInView={{
-                opacity: 1,
-                y: 0,
-            }}
-
-            viewport={{
-                once: true,
-            }}
-
             transition={{
-                duration: .5,
+              duration: .55,
+              ease: "easeInOut",
             }}
+            className="flex"
+          >
 
-            className="rounded-[36px] border border-[#EFE4D1] bg-white p-10 shadow-[0_20px_60px_rgba(0,0,0,.06)]"
+            {desktopPages.map((page, pageIndex) => (
 
-        >
+              <div
+                key={pageIndex}
+                className="grid w-full shrink-0 grid-cols-3 gap-5"
+              >
 
-            {/* Rating */}
+                {page.map((testimonial, cardIndex) => (
 
-            <div className="flex items-center gap-1">
+                  <motion.article
+                    key={testimonial.name}
+                    initial={{
+                      opacity: 0,
+                      y: 20,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                    }}
+                    transition={{
+                      duration: .45,
+                      delay: cardIndex * .08,
+                    }}
+                    whileHover={{
+                      y: -6,
+                    }}
+                    className="flex h-full flex-col rounded-3xl border border-surface-border bg-white p-6 shadow-soft transition-shadow hover:shadow-card"
+                  >
 
-                {[1, 2, 3, 4, 5].map((star) => (
+                    {renderContent(
+                      testimonial,
+                      true
+                    )}
 
-                    <Star
-                        key={star}
-                        size={20}
-                        fill="#F9A825"
-                        className="text-[#F9A825]"
-                    />
+                  </motion.article>
 
                 ))}
 
-            </div>
+              </div>
 
-            {/* Review */}
+            ))}
 
-            <p
-                className="mt-8 text-lg leading-8 text-stone-700 line-clamp-5 min-h-[10rem]"
+          </motion.div>
+
+        </div>
+
+        {/* ---------------- Mobile Slider ---------------- */}
+
+        <div className="relative mt-16 lg:hidden">
+
+          <AnimatePresence
+            mode="wait"
+            custom={direction}
+          >
+
+            <motion.article
+              key={mobileIndex}
+              custom={direction}
+              initial={{
+                opacity: 0,
+                x: direction > 0 ? 70 : -70,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              exit={{
+                opacity: 0,
+                x: direction > 0 ? -70 : 70,
+              }}
+              transition={{
+                duration: .45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="rounded-3xl border border-surface-border bg-white p-8 shadow-card"
             >
-                "{testimonial.review}"
-            </p>
 
-            {/* Divider */}
+              {renderContent(
+                TESTIMONIALS[mobileIndex]
+              )}
 
-            <div className="my-10 h-px bg-[#F3E7D4]" />
+            </motion.article>
 
-            {/* User */}
+          </AnimatePresence>
 
-            <div className="flex items-center gap-5">
+        </div>
+        {/* ---------------- Navigation ---------------- */}
 
-                <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="h-[72px] w-[72px] rounded-full border-2 border-[#F4DFC2] object-cover shadow-sm"
-                />
+        <div className="mt-10 flex items-center justify-center gap-5">
 
-                <div>
+          {/* Previous */}
 
-                    <h3 className="text-lg font-bold text-[#171717]">
+          <button
+            onClick={() => {
+              if (window.innerWidth >= 1024) {
+                prevDesktop();
+              } else {
+                prevMobile();
+              }
+            }}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border bg-white shadow-soft transition-all hover:border-brand-indigo hover:text-brand-indigo"
+          >
+            <ChevronLeftIcon size={18} />
+          </button>
 
-                        {testimonial.name}
+          {/* Desktop Indicators */}
 
-                    </h3>
+          <div className="hidden items-center gap-2 lg:flex">
 
-                    <div className="mt-2 inline-flex rounded-full bg-[#FFF7EA] px-3 py-1 text-xs font-medium text-[#B76B00]">
-                        {testimonial.company}
-                    </div>
+            {desktopPages.map((_, i) => (
 
-                    <p className="mt-2 text-sm text-stone-500">
-                        {testimonial.country}
-                    </p>
+              <button
+                key={i}
+                onClick={() => {
+                  setDirection(i > desktopPage ? 1 : -1);
+                  setDesktopPage(i);
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${desktopPage === i
+                    ? "w-8 bg-brand-indigo"
+                    : "w-2 bg-surface-border"
+                  }`}
+              />
 
-                </div>
+            ))}
 
-            </div>
+          </div>
 
-        </motion.article>
+          {/* Mobile Indicators */}
 
-    );
+          <div className="flex items-center gap-2 lg:hidden">
 
+            {TESTIMONIALS.map((_, i) => (
+
+              <button
+                key={i}
+                onClick={() => {
+                  setDirection(i > mobileIndex ? 1 : -1);
+                  setMobileIndex(i);
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${mobileIndex === i
+                    ? "w-8 bg-brand-indigo"
+                    : "w-2 bg-surface-border"
+                  }`}
+              />
+
+            ))}
+
+          </div>
+
+          {/* Next */}
+
+          <button
+            onClick={() => {
+              if (window.innerWidth >= 1024) {
+                nextDesktop();
+              } else {
+                nextMobile();
+              }
+            }}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border bg-white shadow-soft transition-all hover:border-brand-indigo hover:text-brand-indigo"
+          >
+            <ChevronRightIcon size={18} />
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+  );
 }
