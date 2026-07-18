@@ -18,7 +18,7 @@ export function FinalCTA() {
       
       {/* Animated gradients + glows */}
       <motion.div
-        className="pointer-events-none absolute left-1/4 top-0 h-[400px] w-[400px] rounded-full bg-brand-indigo/30 blur-[130px]"
+        className="pointer-events-none absolute left-1/4 top-0 h-[400px] w-[400px] rounded-full bg-[#F5A300]/25 blur-[130px]"
         animate={{
           x: [0, 60, 0],
           opacity: [0.5, 0.8, 0.5]
@@ -30,7 +30,7 @@ export function FinalCTA() {
         }} />
       
       <motion.div
-        className="pointer-events-none absolute right-1/4 bottom-0 h-[360px] w-[360px] rounded-full bg-brand-cyan/25 blur-[130px]"
+        className="pointer-events-none absolute right-1/4 bottom-0 h-[360px] w-[360px] rounded-full bg-[#FFD56A]/20 blur-[130px]"
         animate={{
           x: [0, -50, 0],
           opacity: [0.4, 0.7, 0.4]
@@ -72,7 +72,7 @@ export function FinalCTA() {
           className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl">
           
           Ready to Launch Your{' '}
-          <span className="bg-gradient-to-r from-brand-indigo via-brand-cyan to-brand-emerald bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#F5A300] via-[#E89A00] to-[#FFD56A] bg-clip-text text-transparent">
             Marketplace Platform?
           </span>
         </motion.h2>
@@ -118,9 +118,9 @@ export function FinalCTA() {
           {INCLUDED.map((item) =>
           <span
             key={item}
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-sm font-medium text-slate-200 backdrop-blur">
+            className="inline-flex items-center gap-1.5 rounded-full border border-[#F5A300]/20 bg-[#F5A300]/8 px-3.5 py-1.5 text-sm font-medium text-slate-200 backdrop-blur">
             
-              <CheckIcon size={14} className="text-brand-emerald" />
+              <CheckIcon size={14} className="text-[#F5A300]" />
               {item}
             </span>
           )}

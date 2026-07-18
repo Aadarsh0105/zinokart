@@ -3,9 +3,9 @@ import {
   motion,
   useInView,
   useMotionValue,
-  useSpring,
-  animate } from
-'framer-motion';
+  animate
+} from
+  'framer-motion';
 // ---------- Section heading ----------
 type SectionHeadingProps = {
   eyebrow?: string;
@@ -22,9 +22,9 @@ export function SectionHeading({
   className = ''
 }: SectionHeadingProps) {
   const alignment =
-  align === 'center' ?
-  'text-center mx-auto items-center' :
-  'text-left items-start';
+    align === 'center' ?
+      'text-center mx-auto items-center' :
+      'text-left items-start';
   return (
     <motion.div
       initial={{
@@ -44,10 +44,10 @@ export function SectionHeading({
         ease: [0.22, 1, 0.36, 1]
       }}
       className={`flex flex-col ${alignment} max-w-3xl ${className}`}>
-      
+
       {eyebrow &&
-      <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-surface-border bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-indigo shadow-soft">
-          <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" />
+        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#F3E5C6] bg-[#FFFDF8] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#D98A00] shadow-sm">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#F5A300]" />
           {eyebrow}
         </span>
       }
@@ -55,7 +55,7 @@ export function SectionHeading({
         {title}
       </h2>
       {description &&
-      <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
+        <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
           {description}
         </p>
       }
@@ -112,7 +112,7 @@ export function FadeUp({
 
 
 
-}: {children: React.ReactNode;delay?: number;className?: string;y?: number;}) {
+}: { children: React.ReactNode; delay?: number; className?: string; y?: number; }) {
   return (
     <motion.div
       initial={{
@@ -133,7 +133,7 @@ export function FadeUp({
         ease: [0.22, 1, 0.36, 1]
       }}
       className={className}>
-      
+
       {children}
     </motion.div>);
 
@@ -147,26 +147,26 @@ export function AppStoreButtons({
 
 
 
-}: {variant?: 'light' | 'dark';className?: string;fullWidthOnMobile?: boolean;}) {
+}: { variant?: 'light' | 'dark'; className?: string; fullWidthOnMobile?: boolean; }) {
   const base =
-  variant === 'dark' ?
-  'border-white/15 bg-white/10 text-white hover:bg-white/20 backdrop-blur' :
-  'border-surface-border bg-white text-ink hover:border-brand-indigo/40 hover:shadow-card';
+    variant === 'dark'
+      ? 'border-[#F5A300]/20 bg-[#F5A300]/10 text-white hover:bg-[#F5A300]/20 backdrop-blur'
+      : 'border-[#F3E5C6] bg-white text-ink hover:border-[#F5A300]/40 hover:shadow-[0_15px_35px_rgba(245,163,0,.10)]';
   const layout = fullWidthOnMobile ?
-  'w-full flex-col sm:w-auto sm:flex-row' :
-  'flex-wrap';
+    'w-full flex-col sm:w-auto sm:flex-row' :
+    'flex-wrap';
   const buttonWidth = fullWidthOnMobile ? 'w-full justify-center sm:w-auto' : '';
   return (
     <div className={`flex items-center gap-3 ${layout} ${className}`}>
       <a
         href="#"
         className={`group flex min-h-14 items-center gap-3 rounded-2xl border px-5 py-3 transition-[transform,box-shadow,border-color,background-color] duration-200 hover:-translate-y-0.5 ${base} ${buttonWidth}`}>
-        
+
         <PlayIcon />
         <span className="flex flex-col leading-none">
           <span
             className={`text-[10px] uppercase tracking-wide ${variant === 'dark' ? 'text-white/60' : 'text-ink-soft'}`}>
-            
+
             Get it on
           </span>
           <span className="mt-0.5 font-display text-sm font-semibold">
@@ -177,12 +177,12 @@ export function AppStoreButtons({
       <a
         href="#"
         className={`group flex min-h-14 items-center gap-3 rounded-2xl border px-5 py-3 transition-[transform,box-shadow,border-color,background-color] duration-200 hover:-translate-y-0.5 ${base} ${buttonWidth}`}>
-        
+
         <AppleIcon />
         <span className="flex flex-col leading-none">
           <span
             className={`text-[10px] uppercase tracking-wide ${variant === 'dark' ? 'text-white/60' : 'text-ink-soft'}`}>
-            
+
             Download on the
           </span>
           <span className="mt-0.5 font-display text-sm font-semibold">
@@ -201,7 +201,7 @@ function PlayIcon() {
       viewBox="0 0 22 24"
       fill="none"
       aria-hidden="true">
-      
+
       <path d="M1 1.5v21l11-10.5L1 1.5Z" fill="#4F46E5" />
       <path d="M12 12 1 22.5l14.5-8L12 12Z" fill="#06B6D4" />
       <path d="M12 12 15.5 8 1 1.5 12 12Z" fill="#10B981" />
@@ -209,7 +209,7 @@ function PlayIcon() {
         d="m12 12 3.5 2.5L21 12l-5.5-4L12 12Z"
         fill="#4F46E5"
         opacity="0.8" />
-      
+
     </svg>);
 
 }
@@ -221,7 +221,7 @@ function AppleIcon() {
       viewBox="0 0 20 24"
       fill="currentColor"
       aria-hidden="true">
-      
+
       <path d="M16.5 12.7c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.2-1.2 3.1-2.5.6-.9.9-1.4 1.4-2.4-3.7-1.4-2.9-4.9-2.9-4.9ZM14 4.3c.7-.9 1.2-2.1 1.1-3.3-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.2 1.1.1 2.3-.6 3-1.5Z" />
     </svg>);
 

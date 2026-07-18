@@ -1,3 +1,227 @@
+// import { motion } from 'framer-motion';
+// import {
+//   SmartphoneIcon,
+//   StoreIcon,
+//   BikeIcon,
+//   RefreshCwIcon,
+//   BellIcon,
+//   CreditCardIcon,
+//   MapPinIcon,
+//   MessageSquareIcon } from
+// 'lucide-react';
+// import { SectionHeading, FadeUp } from './primitives';
+// const NODES = [
+// {
+//   title: 'Customer App',
+//   icon: SmartphoneIcon,
+//   angle: -90
+// },
+// {
+//   title: 'Store App',
+//   icon: StoreIcon,
+//   angle: 30
+// },
+// {
+//   title: 'Delivery App',
+//   icon: BikeIcon,
+//   angle: 150
+// }];
+
+// const SYNC_ITEMS = [
+// {
+//   icon: RefreshCwIcon,
+//   label: 'Orders'
+// },
+// {
+//   icon: CreditCardIcon,
+//   label: 'Payments'
+// },
+// {
+//   icon: BellIcon,
+//   label: 'Notifications'
+// },
+// {
+//   icon: MapPinIcon,
+//   label: 'Tracking'
+// },
+// {
+//   icon: MessageSquareIcon,
+//   label: 'Communication'
+// }];
+
+// export function EcosystemSection() {
+//   const radius = 150;
+//   const center = 200;
+//   return (
+//     <section id="ecosystem" className="relative overflow-hidden py-8 sm:py-10">
+//       <div className="pointer-events-none absolute right-0 top-1/4 -z-10 h-80 w-80 rounded-full bg-brand-indigo/10 blur-[120px]" />
+//       <div className="mx-auto max-w-6xl px-6">
+//         <SectionHeading
+//           eyebrow="Marketplace Ecosystem"
+//           title={
+//           <>
+//               One Platform. Three Dedicated Applications.{' '}
+//               <span className="zk-gradient-text">Unlimited Possibilities.</span>
+//             </>
+//           }
+//           description="The Customer App, Store App and Delivery App aren't separate products — they are three faces of one connected marketplace infrastructure. Every order placed, payment processed, notification sent and location tracked flows through a single synchronized platform, keeping every participant in perfect sync in real time." />
+        
+
+//         <div className="mt-16 grid items-center gap-12 lg:grid-cols-2">
+//           {/* Architecture diagram */}
+//           <FadeUp>
+//             <div className="relative mx-auto aspect-square w-full max-w-md">
+//               <svg viewBox="0 0 400 400" className="h-full w-full">
+//                 <defs>
+//                   <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+//                     <stop offset="0%" stopColor="#4F46E5" stopOpacity="0.35" />
+//                     <stop offset="100%" stopColor="#4F46E5" stopOpacity="0" />
+//                   </radialGradient>
+//                   <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+//                     <stop offset="0%" stopColor="#4F46E5" />
+//                     <stop offset="100%" stopColor="#06B6D4" />
+//                   </linearGradient>
+//                 </defs>
+
+//                 <circle cx="200" cy="200" r="180" fill="url(#coreGlow)" />
+
+//                 {/* Connectors + moving dots */}
+//                 {NODES.map((node, i) => {
+//                   const rad = node.angle * Math.PI / 180;
+//                   const x = center + radius * Math.cos(rad);
+//                   const y = center + radius * Math.sin(rad);
+//                   return (
+//                     <g key={node.title}>
+//                       <line
+//                         x1={center}
+//                         y1={center}
+//                         x2={x}
+//                         y2={y}
+//                         stroke="url(#flow)"
+//                         strokeWidth="2"
+//                         strokeOpacity="0.4" />
+                      
+//                       <motion.circle
+//                         r="4"
+//                         fill="#06B6D4"
+//                         animate={{
+//                           cx: [center, x, center],
+//                           cy: [center, y, center]
+//                         }}
+//                         transition={{
+//                           duration: 3,
+//                           repeat: Infinity,
+//                           delay: i * 0.7,
+//                           ease: 'easeInOut'
+//                         }} />
+                      
+//                     </g>);
+
+//                 })}
+
+//                 {/* Center core */}
+//                 <motion.circle
+//                   cx="200"
+//                   cy="200"
+//                   r="52"
+//                   fill="white"
+//                   stroke="#4F46E5"
+//                   strokeWidth="2"
+//                   animate={{
+//                     scale: [1, 1.05, 1]
+//                   }}
+//                   transition={{
+//                     duration: 3,
+//                     repeat: Infinity,
+//                     ease: 'easeInOut'
+//                   }}
+//                   style={{
+//                     transformOrigin: 'center'
+//                   }} />
+                
+//               </svg>
+
+//               {/* Center label */}
+//               <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center">
+//                 <span className="font-display text-xs font-bold leading-tight text-brand-indigo">
+//                   Marketplace
+//                   <br />
+//                   Infrastructure
+//                 </span>
+//               </div>
+
+//               {/* Node cards */}
+//               {NODES.map((node) => {
+//                 const Icon = node.icon;
+//                 const rad = node.angle * Math.PI / 180;
+//                 const left = 40 + radius / 4 * Math.cos(rad);
+//                 const top = 45 + radius / 4 * Math.sin(rad);
+//                 return (
+//                   <motion.div
+//                     key={node.title}
+//                     className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5"
+//                     style={{
+//                       left: `${left}%`,
+//                       top: `${top}%`
+//                     }}
+//                     animate={{
+//                       y: [0, -6, 0]
+//                     }}
+//                     transition={{
+//                       duration: 4,
+//                       repeat: Infinity,
+//                       ease: 'easeInOut'
+//                     }}>
+                    
+//                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-surface-border bg-white text-brand-indigo shadow-card">
+//                       <Icon size={22} />
+//                     </span>
+//                     <span className="rounded-full bg-white px-2.5 py-0.5 text-[11px] font-semibold text-ink shadow-soft">
+//                       {node.title}
+//                     </span>
+//                   </motion.div>);
+
+//               })}
+//             </div>
+//           </FadeUp>
+
+//           {/* Sync explanation */}
+//           <div className="space-y-4">
+//             <FadeUp>
+//               <p className="text-lg font-semibold text-ink">
+//                 One synchronized source of truth for your entire marketplace.
+//               </p>
+//               <p className="mt-2 text-ink-soft">
+//                 When a customer places an order, the store is notified
+//                 instantly, the delivery partner is dispatched, payments settle
+//                 across all parties, and everyone tracks the same live status. No
+//                 disconnected systems, no manual reconciliation.
+//               </p>
+//             </FadeUp>
+//             <div className="grid gap-3 sm:grid-cols-2">
+//               {SYNC_ITEMS.map((item, i) => {
+//                 const Icon = item.icon;
+//                 return (
+//                   <FadeUp key={item.label} delay={i * 0.06}>
+//                     <div className="flex items-center gap-3 rounded-xl border border-surface-border bg-white p-3.5 shadow-soft transition-transform hover:-translate-y-0.5">
+//                       <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-indigo/10 text-brand-indigo">
+//                         <Icon size={18} />
+//                       </span>
+//                       <span className="text-sm font-semibold text-ink">
+//                         {item.label} in sync
+//                       </span>
+//                     </div>
+//                   </FadeUp>);
+
+//               })}
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </section>);
+
+// }
+
 import { motion } from 'framer-motion';
 import {
   SmartphoneIcon,
@@ -7,89 +231,127 @@ import {
   BellIcon,
   CreditCardIcon,
   MapPinIcon,
-  MessageSquareIcon } from
-'lucide-react';
+  MessageSquareIcon,
+} from 'lucide-react';
 import { SectionHeading, FadeUp } from './primitives';
+
 const NODES = [
-{
-  title: 'Customer App',
-  icon: SmartphoneIcon,
-  angle: -90
-},
-{
-  title: 'Store App',
-  icon: StoreIcon,
-  angle: 30
-},
-{
-  title: 'Delivery App',
-  icon: BikeIcon,
-  angle: 150
-}];
+  {
+    title: 'Customer App',
+    icon: SmartphoneIcon,
+    angle: -90,
+  },
+  {
+    title: 'Store App',
+    icon: StoreIcon,
+    angle: 30,
+  },
+  {
+    title: 'Delivery App',
+    icon: BikeIcon,
+    angle: 150,
+  },
+];
 
 const SYNC_ITEMS = [
-{
-  icon: RefreshCwIcon,
-  label: 'Orders'
-},
-{
-  icon: CreditCardIcon,
-  label: 'Payments'
-},
-{
-  icon: BellIcon,
-  label: 'Notifications'
-},
-{
-  icon: MapPinIcon,
-  label: 'Tracking'
-},
-{
-  icon: MessageSquareIcon,
-  label: 'Communication'
-}];
+  {
+    icon: RefreshCwIcon,
+    label: 'Orders',
+  },
+  {
+    icon: CreditCardIcon,
+    label: 'Payments',
+  },
+  {
+    icon: BellIcon,
+    label: 'Notifications',
+  },
+  {
+    icon: MapPinIcon,
+    label: 'Tracking',
+  },
+  {
+    icon: MessageSquareIcon,
+    label: 'Communication',
+  },
+];
 
 export function EcosystemSection() {
   const radius = 150;
   const center = 200;
+
   return (
-    <section id="ecosystem" className="relative overflow-hidden py-8 sm:py-10">
-      <div className="pointer-events-none absolute right-0 top-1/4 -z-10 h-80 w-80 rounded-full bg-brand-indigo/10 blur-[120px]" />
+    <section
+      id="ecosystem"
+      className="relative overflow-hidden bg-white py-10 sm:py-14"
+    >
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute right-0 top-1/3 -z-10 h-[420px] w-[420px] rounded-full bg-[#FFD76B]/10 blur-[140px]" />
+      <div className="pointer-events-none absolute left-0 bottom-0 -z-10 h-[320px] w-[320px] rounded-full bg-[#FFF4D3] blur-[120px]" />
+
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Marketplace Ecosystem"
           title={
-          <>
+            <>
               One Platform. Three Dedicated Applications.{' '}
-              <span className="zk-gradient-text">Unlimited Possibilities.</span>
+              <span className="zk-gradient-text">
+                Connected Marketplace.
+              </span>
             </>
           }
-          description="The Customer App, Store App and Delivery App aren't separate products — they are three faces of one connected marketplace infrastructure. Every order placed, payment processed, notification sent and location tracked flows through a single synchronized platform, keeping every participant in perfect sync in real time." />
-        
+          description="The Customer App, Store App and Delivery App aren't separate products — they are three faces of one connected marketplace infrastructure. Every order placed, payment processed, notification sent and location tracked flows through a single synchronized platform, keeping every participant in perfect sync in real time."
+        />
 
         <div className="mt-16 grid items-center gap-12 lg:grid-cols-2">
-          {/* Architecture diagram */}
+
+          {/* Architecture Diagram */}
           <FadeUp>
             <div className="relative mx-auto aspect-square w-full max-w-md">
+
               <svg viewBox="0 0 400 400" className="h-full w-full">
                 <defs>
+
+                  {/* Warm Center Glow */}
                   <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#4F46E5" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#4F46E5" stopOpacity="0" />
+                    <stop
+                      offset="0%"
+                      stopColor="#FFD56A"
+                      stopOpacity="0.22"
+                    />
+                    <stop
+                      offset="100%"
+                      stopColor="#FFD56A"
+                      stopOpacity="0"
+                    />
                   </radialGradient>
+
+                  {/* Orange Flow */}
                   <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#4F46E5" />
-                    <stop offset="100%" stopColor="#06B6D4" />
+                    <stop offset="0%" stopColor="#F5A300" />
+                    <stop offset="100%" stopColor="#FFCA42" />
                   </linearGradient>
+
                 </defs>
 
-                <circle cx="200" cy="200" r="180" fill="url(#coreGlow)" />
+                {/* Glow */}
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="180"
+                  fill="url(#coreGlow)"
+                />
 
-                {/* Connectors + moving dots */}
+                {/* Connectors */}
                 {NODES.map((node, i) => {
-                  const rad = node.angle * Math.PI / 180;
-                  const x = center + radius * Math.cos(rad);
-                  const y = center + radius * Math.sin(rad);
+                  const rad = (node.angle * Math.PI) / 180;
+
+                  const x =
+                    center + radius * Math.cos(rad);
+
+                  const y =
+                    center + radius * Math.sin(rad);
+
                   return (
                     <g key={node.title}>
                       <line
@@ -99,125 +361,143 @@ export function EcosystemSection() {
                         y2={y}
                         stroke="url(#flow)"
                         strokeWidth="2"
-                        strokeOpacity="0.4" />
-                      
+                        strokeOpacity="0.45"
+                      />
+
+                      {/* Moving Dot */}
                       <motion.circle
                         r="4"
-                        fill="#06B6D4"
+                        fill="#F5A300"
                         animate={{
                           cx: [center, x, center],
-                          cy: [center, y, center]
+                          cy: [center, y, center],
                         }}
                         transition={{
                           duration: 3,
                           repeat: Infinity,
                           delay: i * 0.7,
-                          ease: 'easeInOut'
-                        }} />
-                      
-                    </g>);
-
+                          ease: 'easeInOut',
+                        }}
+                      />
+                    </g>
+                  );
                 })}
 
-                {/* Center core */}
+                {/* Center Circle */}
                 <motion.circle
                   cx="200"
                   cy="200"
                   r="52"
-                  fill="white"
-                  stroke="#4F46E5"
+                  fill="#FFFDF8"
+                  stroke="#F5A300"
                   strokeWidth="2"
                   animate={{
-                    scale: [1, 1.05, 1]
+                    scale: [1, 1.05, 1],
                   }}
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    ease: 'easeInOut'
+                    ease: 'easeInOut',
                   }}
                   style={{
-                    transformOrigin: 'center'
-                  }} />
-                
+                    transformOrigin: 'center',
+                  }}
+                />
               </svg>
 
-              {/* Center label */}
+              {/* Center Label */}
               <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center">
-                <span className="font-display text-xs font-bold leading-tight text-brand-indigo">
+                <span className="font-display text-xs font-bold leading-tight text-[#D98A00]">
                   Marketplace
                   <br />
                   Infrastructure
                 </span>
               </div>
-
-              {/* Node cards */}
+                            {/* Node Cards */}
               {NODES.map((node) => {
                 const Icon = node.icon;
-                const rad = node.angle * Math.PI / 180;
-                const left = 40 + radius / 4 * Math.cos(rad);
-                const top = 45 + radius / 4 * Math.sin(rad);
+
+                const rad = (node.angle * Math.PI) / 180;
+
+                const left = 40 + (radius / 4) * Math.cos(rad);
+                const top = 45 + (radius / 4) * Math.sin(rad);
+
                 return (
                   <motion.div
                     key={node.title}
                     className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5"
                     style={{
                       left: `${left}%`,
-                      top: `${top}%`
+                      top: `${top}%`,
                     }}
                     animate={{
-                      y: [0, -6, 0]
+                      y: [0, -6, 0],
                     }}
                     transition={{
                       duration: 4,
                       repeat: Infinity,
-                      ease: 'easeInOut'
-                    }}>
-                    
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-surface-border bg-white text-brand-indigo shadow-card">
+                      ease: 'easeInOut',
+                    }}
+                  >
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#F5D7A2] bg-white text-[#E88B00] shadow-card">
                       <Icon size={22} />
                     </span>
-                    <span className="rounded-full bg-white px-2.5 py-0.5 text-[11px] font-semibold text-ink shadow-soft">
+
+                    <span className="rounded-full border border-[#F7E2B3] bg-[#FFFDF9] px-2.5 py-0.5 text-[11px] font-semibold text-ink shadow-soft">
                       {node.title}
                     </span>
-                  </motion.div>);
-
+                  </motion.div>
+                );
               })}
             </div>
           </FadeUp>
 
-          {/* Sync explanation */}
-          <div className="space-y-4">
+          {/* Right Content */}
+          <div className="space-y-5">
             <FadeUp>
               <p className="text-lg font-semibold text-ink">
-                One synchronized source of truth for your entire marketplace.
+                One synchronized{" "}
+                <span className="zk-gradient-text">
+                  source of truth
+                </span>{" "}
+                for your entire marketplace.
               </p>
-              <p className="mt-2 text-ink-soft">
+
+              <p className="mt-3 text-ink-soft leading-7">
                 When a customer places an order, the store is notified
                 instantly, the delivery partner is dispatched, payments settle
-                across all parties, and everyone tracks the same live status. No
-                disconnected systems, no manual reconciliation.
+                across all parties, and everyone tracks the same live status.
+                No disconnected systems and no manual reconciliation.
               </p>
             </FadeUp>
+
             <div className="grid gap-3 sm:grid-cols-2">
               {SYNC_ITEMS.map((item, i) => {
                 const Icon = item.icon;
+
                 return (
-                  <FadeUp key={item.label} delay={i * 0.06}>
-                    <div className="flex items-center gap-3 rounded-xl border border-surface-border bg-white p-3.5 shadow-soft transition-transform hover:-translate-y-0.5">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-indigo/10 text-brand-indigo">
+                  <FadeUp
+                    key={item.label}
+                    delay={i * 0.06}
+                  >
+                    <div className="flex items-center gap-3 rounded-xl border border-[#F4E2BE] bg-[#FFFDFB] p-3.5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_35px_rgba(245,163,0,.12)]">
+
+                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#FFF4DA] text-[#F5A300]">
                         <Icon size={18} />
                       </span>
+
                       <span className="text-sm font-semibold text-ink">
                         {item.label} in sync
                       </span>
-                    </div>
-                  </FadeUp>);
 
+                    </div>
+                  </FadeUp>
+                );
               })}
             </div>
           </div>
-        </div>
+                  </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }

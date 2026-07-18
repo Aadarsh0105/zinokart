@@ -112,9 +112,11 @@ const STATS = [
 
 export function WhyZinokart() {
   return (
-    <section className="relative overflow-hidden bg-surface-bg py-8 sm:py-10">
-      <div className="pointer-events-none absolute left-0 bottom-0 -z-10 h-80 w-80 rounded-full bg-brand-emerald/10 blur-[120px]" />
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="relative overflow-hidden bg-[#FFFEFC] py-8 sm:py-10">
+      <div className="pointer-events-none absolute left-0 bottom-0 -z-10 h-80 w-80 rounded-full bg-[#FFE7B0]/35 blur-[120px]" />
+      <div className="pointer-events-none absolute right-0 top-0 -z-10 h-72 w-72 rounded-full bg-[#FFF5D9] blur-[110px]" />
+      <div className="zk-grid pointer-events-none absolute inset-0 -z-20 opacity-[0.04]" />
+      <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Why Choose Zinokart"
           title={
@@ -130,10 +132,10 @@ export function WhyZinokart() {
 
         {/* Stats bar */}
         <FadeUp>
-          <div className="mt-14 grid grid-cols-3 gap-4 rounded-3xl border border-surface-border bg-white p-6 shadow-soft sm:grid-cols-3 sm:p-8">
+          <div className="mt-14 grid grid-cols-3 gap-4 rounded-3xl border border-[#F3E5C6] bg-white p-6 shadow-[0_10px_30px_rgba(15,23,42,.05)] sm:grid-cols-3 sm:p-8">
             {STATS.map((s) =>
               <div key={s.label} className="text-center">
-                <p className="font-display text-3xl font-bold text-ink sm:text-4xl">
+                <p className="font-display text-3xl font-bold text-[#F5A300] sm:text-4xl">
                   <Counter to={s.to} suffix={s.suffix} />
                 </p>
                 <p className="mt-1 text-xs font-medium text-ink-soft sm:text-sm">
@@ -149,8 +151,8 @@ export function WhyZinokart() {
             const Icon = adv.icon;
             return (
               <FadeUp key={adv.title} delay={i % 3 * 0.07}>
-                <div className="group flex h-full items-start gap-4 rounded-2xl border border-surface-border bg-white p-5 shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-indigo/10 text-brand-indigo transition-colors group-hover:bg-brand-indigo group-hover:text-white">
+                <div className="group flex h-full items-start gap-4 rounded-2xl border border-[#F3E5C6] bg-white p-5 shadow-[0_10px_30px_rgba(15,23,42,.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#F5A300]/40 hover:shadow-[0_20px_45px_rgba(245,163,0,.10)]">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#FFF4DA] text-[#F5A300] transition-colors group-hover:bg-[#F5A300] group-hover:text-white">
                     <Icon size={20} />
                   </span>
                   <div>
