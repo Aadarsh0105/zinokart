@@ -4,12 +4,12 @@ export function Logo() {
       src="/logo.png"
       alt="Zinokart"
       className="
-      h-10
+      h-8
       w-auto
       select-none
       object-contain
-      sm:h-12
-      lg:h-14
+      sm:h-8
+      lg:h-10
       "
       draggable={false}
     />
